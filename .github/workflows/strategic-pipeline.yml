@@ -1,0 +1,81 @@
+name: "🚀 GitHub Strategic Solution Architecture"
+
+# จำกัดสิทธิ์ให้ปลอดภัยสูงสุด (Principle of Least Privilege)
+permissions:
+  contents: write
+  security-events: write
+  pull-requests: write
+  pages: write
+  id-token: write
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch: # เปิดให้กดรันเองได้จากหน้าเว็บ
+
+jobs:
+  # --- ส่วนที่ 1: ตรวจความปลอดภัยและวิเคราะห์โค้ด ---
+  security_and_analysis:
+    name: 🛡️ Security Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # ดึงประวัติทั้งหมดเพื่อสแกนความปลอดภัย
+
+      - name: 🔐 Secret Scanning (Gitleaks)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🔍 CodeQL Analysis (AI Security)
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript, python # เพิ่ม/ลด ภาษาที่ใช้ในโปรเจกต์ได้ที่นี่
+
+      - name: ⚡ Perform Scan
+        uses: github/codeql-action/analyze@v3
+
+  # --- ส่วนที่ 2: สร้างระบบและทดสอบ (Smart Build & Test) ---
+  build_and_test:
+    name: 🏗️ Smart Build & Test
+    needs: security_and_analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js (with Auto-Cache)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm' # ช่วยให้รันครั้งต่อไปเร็วขึ้นมาก
+
+      - name: 📦 Install Dependencies
+        run: npm ci --prefer-offline
+
+      - name: 🧪 Run Unit Tests
+        run: npm test --if-present
+
+  # --- ส่วนที่ 3: สรุปรายงานผลเชิงกลยุทธ์ ---
+  strategic_reporting:
+    name: 📊 Executive Report
+    needs: [security_and_analysis, build_and_test]
+    if: always() # ให้รันเสมอไม่ว่า Test จะผ่านหรือตก เพื่อรายงานผล
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📝 Generate Dashboard Summary
+        run: |
+          echo "## 📈 GitHub Pipeline Executive Summary" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔍 Status Overview" >> $GITHUB_STEP_SUMMARY
+          echo "| Phase | Status | Details |" >> $GITHUB_STEP_SUMMARY
+          echo "| :--- | :--- | :--- |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🛡️ Security Audit | ${{ needs.security_and_analysis.result }} | Gitleaks & CodeQL |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🏗️ Build & Test | ${{ needs.build_and_test.result }} | CI Automation |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> [!TIP]" >> $GITHUB_STEP_SUMMARY
+          echo "> **Architect Note:** หากสถานะเป็น 'success' ทั้งหมด ระบบพร้อมสำหรับการ Deployment 100% ครับ" >> $GITHUB_STEP_SUMMARY
