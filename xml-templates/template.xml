@@ -14,9 +14,9 @@
   <ExampleInput>Example input text here.</ExampleInput>
   <ExampleOutput>Expected example output here.</ExampleOutput>
   <Grammar_Check>
-    <Spelling>หากพบจุดที่อ่านแล้วติดขัดSpelling>
-    <ให้ทำการแก้ไขภายในก่อนแสดงผลลัพธ์สุดท้ายไขภายในก่อนแสดงผลลัพธ์สุดท้ายไขภายในก่อนแสดงผลลัพธ์สุดท้ายอ่านแล้วติดขัดอ่านแล้วติดขัด>ตัดคำสร้อยหรือคำเชื่อมที่ทำให้เนื้อหายืดเยื้อโดยไม่จำเป็น</Conciseness>
-    <Consistencให้ทำการแก้ไขภายในก่อนแสดงผลลัพธ์สุดท้ายตลอดทั้งคำตอบ</Consistency>
+    <Spelling>ตรวจสอบตัวสะกดและวรรณยุกต์ภาษาไทย/อังกฤษอย่างละเอียด 100%</Spelling>
+    <Conciseness>ตัดคำสร้อยหรือคำเชื่อมที่ทำให้เนื้อหายืดเยื้อโดยไม่จำเป็น</Conciseness>
+    <Consistency>รักษาภาษาระดับกึ่งทางการให้สอดคล้องกันตลอดทั้งคำตอบ</Consistency>
     <Self_Correction>หากพบจุดที่อ่านแล้วติดขัด ให้ทำการแก้ไขภายในก่อนแสดงผลลัพธ์สุดท้าย</Self_Correction>
   </Grammar_Check>
 </Prompt>
