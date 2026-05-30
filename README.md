@@ -1,4 +1,4 @@
-# ⚡ God-Tier System Instructions (BDL Apex Prime v3.0)
+# ⚡ MXL-PROMPTING คือแหล่งรวบรวม Prompt )
 
 > Elite-level LLM prompts designed for zero-latency execution, precise reasoning, and hallucination control. Home of the BDL Apex Prime engine.
 
@@ -24,26 +24,27 @@
 
 ---
 
-## 🧠 Philosophy: The CO-STAR Framework
-ทุก Prompt ยึดหลัก CO-STAR Framework เพื่อความเป็นมาตรฐานสูงสุด:
+## 🧠 Philosophy: The CO-STAR-G Framework
+ทุก Prompt ยึดหลัก CO-STAR-G Framework เพื่อความเป็นมาตรฐานสูงสุด:
 - **C (Context):** ให้บริบทอย่างชัดเจน
 - **O (Objective):** กำหนดเป้าหมายเชิงวัดผล
 - **S (Style):** สไตล์การเขียนแม่นยำ
 - **T (Tone):** น้ำเสียง/อารมณ์ที่เหมาะสม
 - **A (Audience):** เจาะจงกลุ่มเป้าหมาย
-- **R (Response):** ผลลัพธ์-รูปแบบที่ชัดเจน เช่น Markdown, JSON, Code
+- **R (Response):** ผลลัพธ์-รูปแบบที่ชัดเจน น้ำเสียง Markdown, JSON, Code
+- **G (Grounding & Grammar - การตรวจสอบ): ขั้นตอนสุดท้ายคือการรีดไขมันส่วนเกิน ตรวจสอบความถูกต้องของเนื้อหาและไวยากรณ์ก่อนส่งมอบ
 
 ---
 
 ## 🗂️ Repository Structure
-- **core-frameworks/** — คู่มือ Framework (CO-STAR, Chain-of-Thought)
+- **core-frameworks/** — คู่มือ Framework (CO-STAR-G, Chain-of-Thought)
 - **role-based-prompts/** — ไฟล์ Prompt สำหรับแต่ละ Persona หรืองานเฉพาะ
 - **xml-templates/** — โครง XML สำหรับสร้าง Prompt ใหม่
 
 ## 🔖 Prompt Sets
-Prompt files are also grouped into curated sets to make selection easier. See the `sets/` folder and `sets/SETS_INDEX.md` for named sets (Core Features, CO-STAR, Protocol).
+Prompt files are also grouped into curated sets to make selection easier. See the `sets/` folder and `sets/SETS_INDEX.md` for named sets (Core Features, CO-STAR-G, Protocol).
 
-All sets and prompts should follow the core principles defined in `core-frameworks/PRINCIPLES.md` (CO-STAR compliance, Zero-Latency, Precision Reasoning, Hallucination Control, metadata requirements).
+All sets and prompts should follow the core principles defined in `core-frameworks/PRINCIPLES.md` (CO-STAR-G compliance, Zero-Latency, Precision Reasoning, Hallucination Control, metadata requirements).
 
 ---
 
